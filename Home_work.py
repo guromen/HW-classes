@@ -56,3 +56,20 @@ class Reviewer(Mentor):
 
     def __str__(self):
         print(f'Имя: {self.name}\nФамилия: {self.surname}\n')
+
+#min, max студентов
+m = max(student_1.mid_grade(),student_2.mid_grade())
+n = min(student_1.mid_grade(),student_2.mid_grade())
+
+print(f'Результат сравнения студентов(по средним оценкам за ДЗ):\n ' \
+      f'{student_1.name} {student_1.surname} < {student_2.name} {student_2.surname} = {student_1.mid_grade() < student_2.mid_grade()} ({m} > {n})')
+print()
+
+#min, max лекторов
+a = max(lecturer_1.mid_grade(),lecturer_2.mid_grade())
+b = min(lecturer_1.mid_grade(),lecturer_2.mid_grade())
+
+
+print(f'Результат сравнения лекторов (по средним оценкам за лекции):\n ' \
+      f'{lecturer_1.name} {lecturer_1.surname} > {lecturer_2.name} {lecturer_2.surname} = {lecturer_1.mid_grade() > lecturer_2.mid_grade()} ({a} > {b})')
+print()
