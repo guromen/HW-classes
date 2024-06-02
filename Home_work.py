@@ -14,6 +14,14 @@ class Student:
                lecturer.grades[course] = [grade]
         else:
             return'Ошибка'
+    
+    def __str__(self):
+        res = f"Имя: {self.name}\n" \
+              f"Фамилия: {self.surname}\n" \
+              f"Средняя оценка за домашнее задание: {self.mid_grade()}\n" \
+              f"Курсы в процессе обучения: {', '.join(self.courses_in_progress)}\n" \
+              f"Завершенные курсы: {', '.join(self.finished_courses)}"
+        return res
 
 class Mentor:
     def __init__(self, name, surname):
@@ -26,6 +34,9 @@ class Lecturer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
         self.grades = {}
+
+    def __str__(self):
+        return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.mid_grade()}'
 
 
 class Reviewer(Mentor):
@@ -42,3 +53,6 @@ class Reviewer(Mentor):
                 student.grades[course] = [grade]
         else:
             return'Ошибка'
+
+    def __str__(self):
+        print(f'Имя: {self.name}\nФамилия: {self.surname}\n')
