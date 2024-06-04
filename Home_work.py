@@ -32,6 +32,21 @@ class Student:
         else:
             return'Ошибка'
 
+    def __lt__(self, other):
+        if not isinstance(other, Student):
+            print('Сравнение некорректно')
+        return self.mid_grade() < other.mid_grade()
+
+    def __le__(self, other):
+        if not isinstance(other, Student):
+            print('Сравнение некорректно')
+        return self.mid_grade() <= other.mid_grade()
+
+    def __eq__(self, other):
+        if not isinstance(other, Student):
+            print('Сравнение некорректно')
+        return self.mid_grade() == other.mid_grade()
+
 
 class Mentor:
     def __init__(self, name, surname):
@@ -56,6 +71,21 @@ class Lecturer(Mentor):
 
     def __str__(self):
         return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.mid_grade()}'
+
+    def __lt__(self, other):
+        if not isinstance(other, Lecturer):
+            print('Сравнение некорректно')
+        return self.mid_grade() < other.mid_grade()
+
+    def __le__(self, other):
+        if not isinstance(other, Lecturer):
+            print('Сравнение некорректно')
+        return self.mid_grade() <= other.mid_grade()
+
+    def __eq__(self, other):
+        if not isinstance(other, Lecturer):
+            print('Сравнение некорректно')
+        return self.mid_grade() == other.mid_grade()
 
 
 class Reviewer(Mentor):
@@ -137,8 +167,10 @@ print()
 m = max(student_1.mid_grade(),student_2.mid_grade())
 n = min(student_1.mid_grade(),student_2.mid_grade())
 
-print(f'Результат сравнения студентов(по средним оценкам за ДЗ):\n ' \
-      f'{student_1.name} {student_1.surname} < {student_2.name} {student_2.surname} = {student_1.mid_grade() < student_2.mid_grade()} ({m} > {n})')
+print(f'Результат сравнения студентов(по средним оценкам за ДЗ):\n' \
+      f'{student_1.name} {student_1.surname} < {student_2.name} {student_2.surname} = {student_1 < student_2} (т.к. {m} > {n})\n' \
+      f'{student_1.name} {student_1.surname} = {student_2.name} {student_2.surname} = {student_1 == student_2} (т.к. {m} > {n})\n' \
+      f'{student_1.name} {student_1.surname} > {student_2.name} {student_2.surname} = {student_1 > student_2} (т.к. {m} > {n})')
 print()
 
 #min, max лекторов
@@ -146,8 +178,10 @@ a = max(lecturer_1.mid_grade(),lecturer_2.mid_grade())
 b = min(lecturer_1.mid_grade(),lecturer_2.mid_grade())
 
 
-print(f'Результат сравнения лекторов (по средним оценкам за лекции):\n ' \
-      f'{lecturer_1.name} {lecturer_1.surname} > {lecturer_2.name} {lecturer_2.surname} = {lecturer_1.mid_grade() > lecturer_2.mid_grade()} ({a} > {b})')
+print(f'Результат сравнения лекторов (по средним оценкам за лекции):\n' \
+      f'{lecturer_1.name} {lecturer_1.surname} < {lecturer_2.name} {lecturer_2.surname} = {lecturer_1 < lecturer_2} (т.к. {a} > {b})\n' \
+      f'{lecturer_1.name} {lecturer_1.surname} = {lecturer_2.name} {lecturer_2.surname} = {lecturer_1 == lecturer_2} (т.к. {a} > {b})\n' \
+      f'{lecturer_1.name} {lecturer_1.surname} > {lecturer_2.name} {lecturer_2.surname} = {lecturer_1 > lecturer_2} (т.к. {a} > {b})')
 print()
 
 student_list = [student_1 , student_2, student_3] 
